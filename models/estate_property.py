@@ -1,8 +1,6 @@
 from odoo import models
 from odoo.exceptions import UserError
 
-_inherit = "estate.property"
-
 class EstateProperty(models.Model):
     _inherit = 'estate.property'
 
@@ -12,8 +10,6 @@ class EstateProperty(models.Model):
         for property in self:
             partner = property.salesperson_id.partner_id.id
             selling_price = property.selling_price
-
-
             self.env['account.move'].create({
                 'partner_id': partner,
                 'move_type': 'out_invoice',
@@ -22,7 +18,6 @@ class EstateProperty(models.Model):
                         'name': '6% Commission Fee',
                         'quantity': 1.0,
                         'price_unit': selling_price * 0.06,
-
                     }),
                     (0, 0, {
                         'name': 'Administrative Fees',
@@ -31,5 +26,4 @@ class EstateProperty(models.Model):
                     }),
                 ]
             })
-
         return res
