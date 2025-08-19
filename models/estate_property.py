@@ -1,4 +1,4 @@
-from odoo import models
+from odoo import models, tools
 from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
@@ -6,7 +6,7 @@ class EstateProperty(models.Model):
 
     def set_property_sold(self):
         res = super().set_property_sold()
-        print("estate_account: property sold logic triggered")
+        tools.logging.warning("estate_account: property sold logic triggered") 
         for property in self:
             partner = property.salesperson_id.partner_id.id
             selling_price = property.selling_price
