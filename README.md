@@ -1,0 +1,1 @@
+Estate Account is an extension module that integrates the Estate and Account modules in Odoo. It automatically generates customer invoices for each property sold through the Estate module. The module pulls relevant data from the property and offer records and uses it to populate the invoice fields in the Accounting module, streamlining the billing process for real estate sales.
